@@ -8,22 +8,21 @@ import VideoCard from "./VideoCard";
 const Container = styled.div`
   background-image: url(${BG001});
   background-position: center;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  height: 100vh;
   background-size: cover;
-  padding: 10px;
 
-  /* gap: 5px; */
 `;
 
-
+const Wrapper = styled.div`
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+margin-left: 5px;
+`
 
 const HomePage = () => {
   return (
     <Container>
-   
+      <Wrapper>
         <VideoCard />
         <VideoCard />
         <VideoCard />
@@ -33,12 +32,7 @@ const HomePage = () => {
         <VideoCard />
         <VideoCard />
         <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
- 
+      </Wrapper>
     </Container>
   );
 };

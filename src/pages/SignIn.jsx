@@ -63,8 +63,8 @@ const Button = styled.button`
 `;
 
 const Account = styled.p`
-margin-top: 5px;
-color: #ffc53d;
+  margin-top: 5px;
+  color: #f0f0f0;
 `;
 
 const initialState = {
@@ -104,7 +104,17 @@ const SignIn = () => {
               />
               <Button>Sign In</Button>
               <Account>
-                Already have account ?<Link to="/signup" style={{textDecoration : "none", marginLeft : "3px"}}>Sign Up</Link>
+                Not yet registered?
+                <Link
+                  to="/signup"
+                  style={{
+                    textDecoration: "none",
+                    marginLeft: "3px",
+                    color: "#fadb14",
+                  }}
+                >
+                  Sign Up
+                </Link>
               </Account>
             </InputWrapper>
           </Form>

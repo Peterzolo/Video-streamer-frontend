@@ -12,7 +12,6 @@ import SignUp from "../pages/SignUp";
 import HomePage from "../pages/HomePage";
 import VideoDetails from "../pages/VideoDetails";
 
-
 const Container = styled.div`
   display: flex;
 `;
@@ -31,21 +30,27 @@ function App() {
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <Container>
         <BrowserRouter>
-          <Menu darkMode={darkMode} setDarkMode={setDarkMode}/>
+          <Menu darkMode={darkMode} setDarkMode={setDarkMode} />
           <Main>
             <Navbar />
             <Wrapper>
               <Routes>
-                {/* <Route path="/" /> */}
-                  <Route path="/" element={< HomePage/>} />
-                  <Route path="signin" element={<SignIn />} />
-                  <Route path="signup" element={< SignUp />} />
-                  <Route path="about" element={<About />} />
-                  <Route path="upload" element={<Upload />} />
-                  <Route path="contact" element={<Contact />} />
-                  <Route path="video">
-                    <Route path=":id" element={<VideoDetails />} />
-                  </Route>
+                {/* <Route path="/"> */}
+                <Route index element={<HomePage type="random"/>} />
+                <Route path="/trends" element={<HomePage type="trends" />} />
+                {/* <Route path="/trends" element={<HomePage type="trends" />} /> */}
+                <Route
+                  path="/subscription"
+                  element={<HomePage type="subscription" />}
+                />
+                <Route path="signin" element={<SignIn />} />
+                <Route path="signup" element={<SignUp />} />
+                <Route path="about" element={<About />} />
+                <Route path="upload" element={<Upload />} />
+                <Route path="contact" element={<Contact />} />
+                <Route path="video">
+                  <Route path=":id" element={<VideoDetails />} />
+                </Route>
                 {/* </Route> */}
               </Routes>
             </Wrapper>

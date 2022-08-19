@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import TestImage from "../images/background002.jpg";
 import Thumbnail from "../images/video-hubz.jpg";
 import { Link } from "react-router-dom";
+import { format } from "timeago.js";
+import axios from "axios";
+import { useEffect } from "react";
 
 const Container = styled.div`
   width: ${(props) => props.type !== "sm" && "250px"};
@@ -64,17 +67,30 @@ const Info = styled.div`
   color: ${({ theme }) => theme.textSoft};
 `;
 
-const VideoCard = ({ type }) => {
+const VideoCard = ({ type, video }) => {
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const response = await axios.get(`user/fetch-one/${video.userId}`);
+      setUser(response.data.result);
+ 
+    };
+    fetchUser();
+  }, [video.userId]);
+
   return (
     <Link to="/video/id" style={{ textDecoration: "none" }}>
       <Container type={type}>
-        <Image type={type} src={TestImage} />
+        <Image type={type} src={video.imgUrl} />
         <Details type={type}>
-          <ChannelImage type={type} src={Thumbnail} />
+          <ChannelImage type={type} src={user.img} />
           <Texts>
-            <Title>Test Video</Title>
-            <ChannelName>Video Hubz</ChannelName>
-            <Info>6,445,223 • 1 day ago</Info>
+            <Title>{video.title}</Title>
+            <ChannelName>{user.name}</ChannelName>
+            <Info>
+              {video.views} views {format(video.createdAt)}
+            </Info>
           </Texts>
         </Details>
       </Container>

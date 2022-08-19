@@ -69,15 +69,35 @@ const Menu = ({ darkMode, setDarkMode }) => {
             V-Hubz
           </Link>
         </Logo>
-        <SideItem>
-          <ExploreOutlinedIcon />
-          Explore
-        </SideItem>
 
-        <SideItem>
-          <SubscriptionsOutlinedIcon />
-          Subscription
-        </SideItem>
+        <Link
+          to="/trends"
+          style={{
+            textDecoration: "none",
+            color: "#262626",
+            cursor: "pointer",
+          }}
+        >
+          <SideItem>
+            <ExploreOutlinedIcon />
+            Explore
+          </SideItem>
+        </Link>
+
+        <Link
+          to="/subscription"
+          style={{
+            textDecoration: "none",
+            color: "#262626",
+            cursor: "pointer",
+          }}
+        >
+          <SideItem>
+            <SubscriptionsOutlinedIcon />
+            Subscription
+          </SideItem>
+        </Link>
+
         <SideItem>
           <LibraryMusicOutlinedIcon />
           Library
@@ -113,7 +133,10 @@ const Menu = ({ darkMode, setDarkMode }) => {
           <SettingsOutlinedIcon />
           Settings
         </SideItem>
-        <SideItem onClick={() => setDarkMode(!darkMode)} style ={{cursor : "pointer", borderRadius : "10px"}} >
+        <SideItem
+          onClick={() => setDarkMode(!darkMode)}
+          style={{ cursor: "pointer", borderRadius: "10px" }}
+        >
           <SettingsBrightnessOutlinedIcon />
           {darkMode ? "Light" : "Dark"} Mode
         </SideItem>

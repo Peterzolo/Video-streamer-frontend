@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import BG002 from "../images/Newbg2.jpg";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import HowToRegIcon from "@mui/icons-material/HowToReg";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -23,7 +24,7 @@ const Right = styled.div`
   margin-top: 100px;
 `;
 
-const Title = styled.h3`
+const Title = styled.h4`
   padding-top: 20px;
   text-align: center;
   color: #f0f0f0;
@@ -64,7 +65,7 @@ const Button = styled.button`
 
 const Account = styled.p`
   margin-top: 5px;
-  color: #ffc53d;
+  color: #f0f0f0;
 `;
 
 const initialState = {
@@ -87,8 +88,8 @@ const SignIn = () => {
         <Right>
           <Form onSubmit={handleFormSubmit}>
             <Title>
-              <AccountCircleOutlinedIcon />
-              Sign In
+              <HowToRegIcon />
+              Sign Up
             </Title>
             <InputWrapper>
               <Input
@@ -114,10 +115,14 @@ const SignIn = () => {
               />
               <Button>Sign In</Button>
               <Account>
-                Not yet registered ?
+                Already have account ?
                 <Link
                   to="/signin"
-                  style={{ textDecoration: "none", marginLeft: "3px" }}
+                  style={{
+                    textDecoration: "none",
+                    marginLeft: "3px",
+                    color: "#fadb14",
+                  }}
                 >
                   Sign Up
                 </Link>

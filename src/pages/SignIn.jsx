@@ -5,6 +5,12 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import {
+  logInFailure,
+  logInStart,
+  logInSuccess,
+} from "../redux/slice/userSlice";
 
 const Container = styled.div`
   background-image: url(${BG002});
@@ -76,24 +82,24 @@ const initialState = {
 const SignIn = () => {
   const [signInForm, setSignInForm] = useState(initialState);
   const { email, password } = signInForm;
+  const dispatch = useDispatch();
 
-  const  handleFormSubmit = async(e) => {
-
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
+    dispatch(logInStart());
     try {
-
-      const response = await axios.post("/user/login",signInForm);
-      console.log('RESPONSE SIGN IN',response)
-      
+      const response = await axios.post("/user/login", signInForm);
+      dispatch(logInSuccess(response.data.result));
+      console.log("RESPONSE SIGN IN", response.data.result);
     } catch (error) {
-      
+      dispatch(logInFailure());
     }
   };
 
   const handleChange = (e) => {
     let { name, value } = e.target;
     setSignInForm({ ...signInForm, [name]: value });
-    console.log('SIGNIN FORM', signInForm)
+    console.log("SIGNIN FORM", signInForm);
   };
 
   return (

@@ -92,14 +92,13 @@ const SignIn = () => {
       dispatch(logInSuccess(response.data.result));
       console.log("RESPONSE SIGN IN", response.data.result);
     } catch (error) {
-      dispatch(logInFailure());
+      dispatch(logInFailure(error));
     }
   };
 
   const handleChange = (e) => {
     let { name, value } = e.target;
     setSignInForm({ ...signInForm, [name]: value });
-    console.log("SIGNIN FORM", signInForm);
   };
 
   return (

@@ -73,6 +73,7 @@ const VideoCard = ({ type, video }) => {
   useEffect(() => {
     const fetchUser = async () => {
       const response = await axios.get(`user/fetch-one/${video.userId}`);
+      console.log('RESPONSE NEW',response.data.result)
       setUser(response.data.result);
  
     };
@@ -87,7 +88,7 @@ const VideoCard = ({ type, video }) => {
           <ChannelImage type={type} src={user.img} />
           <Texts>
             <Title>{video.title}</Title>
-            <ChannelName>{user.name}</ChannelName>
+            <ChannelName>{user.name}</ChannelName>  
             <Info>
               {video.views} views {format(video.createdAt)}
             </Info>

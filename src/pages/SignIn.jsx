@@ -4,6 +4,7 @@ import BG002 from "../images/Newbg2.jpg";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Container = styled.div`
   background-image: url(${BG002});
@@ -73,11 +74,27 @@ const initialState = {
 };
 
 const SignIn = () => {
-  const [formData, setFormData] = useState(initialState);
-  const { email, password } = formData;
+  const [signInForm, setSignInForm] = useState(initialState);
+  const { email, password } = signInForm;
 
-  const handleChange = () => {};
-  const handleFormSubmit = () => {};
+  const  handleFormSubmit = async(e) => {
+
+    e.preventDefault();
+    try {
+
+      const response = await axios.post("/user/login",signInForm);
+      console.log('RESPONSE SIGN IN',response)
+      
+    } catch (error) {
+      
+    }
+  };
+
+  const handleChange = (e) => {
+    let { name, value } = e.target;
+    setSignInForm({ ...signInForm, [name]: value });
+    console.log('SIGNIN FORM', signInForm)
+  };
 
   return (
     <Container>
@@ -93,12 +110,14 @@ const SignIn = () => {
               <Input
                 type="email"
                 placeholder="Enter Email"
+                name="email"
                 value={email}
                 onChange={handleChange}
               />
               <Input
                 type="password"
                 placeholder="Enter password"
+                name="password"
                 value={password}
                 onChange={handleChange}
               />

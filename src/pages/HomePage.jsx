@@ -28,7 +28,7 @@ const HomePage = ({ type }) => {
 
   useEffect(() => {
     const fetchRandomVideos = async () => {
-      const response = await axios.get(`/video/${type}`);
+      const response = await axios.get(`/video/fetch-all`);     
       setVideos(response.data.result);
     };
 

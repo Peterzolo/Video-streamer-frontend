@@ -35,23 +35,15 @@ function App() {
             <Navbar />
             <Wrapper>
               <Routes>
-                {/* <Route path="/"> */}
-                <Route index element={<HomePage type="random"/>} />
-                <Route path="/trends" element={<HomePage type="trends" />} />
-                {/* <Route path="/trends" element={<HomePage type="trends" />} /> */}
-                <Route
-                  path="/subscription"
-                  element={<HomePage type="subscription" />}
-                />
-                <Route path="signin" element={<SignIn />} />
-                <Route path="signup" element={<SignUp />} />
-                <Route path="about" element={<About />} />
-                <Route path="upload" element={<Upload />} />
-                <Route path="contact" element={<Contact />} />
+                <Route index element={<HomePage type="fetch-all" />} />
+                <Route path="/random"  element={<HomePage type="random" />} />
+                <Route path="/trend" element={<HomePage type="trend" />} />
+                <Route path="/sub" element={<HomePage type="sub" />} />
+                <Route path="/signin" element={<SignIn />} />
+                <Route path="/signup" element={<SignUp />} />
                 <Route path="video">
                   <Route path=":id" element={<VideoDetails />} />
                 </Route>
-                {/* </Route> */}
               </Routes>
             </Wrapper>
           </Main>
@@ -62,3 +54,21 @@ function App() {
 }
 
 export default App;
+
+{
+  /* <Route index element={<HomePage type="random" />} />
+<Route path="/trends" element={<HomePage type="trends" />} />
+<Route
+  path="/subscription"
+  element={<HomePage type="subscription" />}
+/>
+<Route path="/signin" element={<SignIn />} />
+<Route path="/signup" element={<SignUp />} />
+<Route path="/about" element={<About />} />
+<Route path="/upload" element={<Upload />} />
+<Route path="/contact" element={<Contact />} />
+
+<Route path="/video" element = { <VideoDetails/> }  /> */
+}
+//   {/* <Route path=":id" element={<VideoDetails />} /> */}
+// {/* </Route> */}

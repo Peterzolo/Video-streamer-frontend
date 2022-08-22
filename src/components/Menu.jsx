@@ -71,7 +71,7 @@ const Menu = ({ darkMode, setDarkMode }) => {
         </Logo>
 
         <Link
-          to="/trends"
+          to="/trend"
           style={{
             textDecoration: "none",
             color: "#262626",
@@ -85,7 +85,7 @@ const Menu = ({ darkMode, setDarkMode }) => {
         </Link>
 
         <Link
-          to="/subscription"
+          to="/sub"
           style={{
             textDecoration: "none",
             color: "#262626",

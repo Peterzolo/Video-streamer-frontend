@@ -70,18 +70,20 @@ const Info = styled.div`
 const VideoCard = ({ type, video }) => {
   const [user, setUser] = useState({});
 
+  console.log('VIDEO',video)
+
   useEffect(() => {
     const fetchUser = async () => {
       const response = await axios.get(`user/fetch-one/${video.userId}`);
-      console.log('RESPONSE NEW',response.data.result)
-      setUser(response.data.result);
+      console.log('RESPONSE NEW 88888',response?.data?.result)
+      setUser(response?.data?.result);
  
     };
     fetchUser();
   }, [video.userId]);
 
   return (
-    <Link to="/video/id" style={{ textDecoration: "none" }}>
+    <Link to="/video/test" style={{ textDecoration: "none" }}>
       <Container type={type}>
         <Image type={type} src={video.imgUrl} />
         <Details type={type}>

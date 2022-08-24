@@ -36,14 +36,13 @@ function App() {
             <Wrapper>
               <Routes>
                 <Route index element={<HomePage type="fetch-all" />} />
-                <Route path="/random"  element={<HomePage type="random" />} />
+                <Route path="/random" element={<HomePage type="random" />} />
                 <Route path="/trend" element={<HomePage type="trend" />} />
                 <Route path="/sub" element={<HomePage type="sub" />} />
                 <Route path="/signin" element={<SignIn />} />
                 <Route path="/signup" element={<SignUp />} />
-                <Route path="video">
-                  <Route path=":id" element={<VideoDetails />} />
-                </Route>
+                <Route path="video" element={<VideoDetails />} />
+                <Route path="video/:id" element={<VideoDetails />} />
               </Routes>
             </Wrapper>
           </Main>

@@ -7,6 +7,12 @@ import VideoCard from "./VideoCard";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import {
+  fetchAllVideosFailure,
+  fetchAllVideosRequest,
+  fetchAllVideosSucess,
+} from "../redux/slice/videoSlice";
 
 const Container = styled.div`
   background-image: url(${BG001});
@@ -23,16 +29,22 @@ const Wrapper = styled.div`
 
 const Video = styled.div``;
 
+
 const HomePage = ({ type }) => {
   const [videos, setVideos] = useState([]);
-
+  const dispatch = useDispatch();
   useEffect(() => {
-    const fetchRandomVideos = async () => {
-      const response = await axios.get(`/video/fetch-all`);     
-      setVideos(response.data.result);
+    const fetchVideos = async () => {
+      dispatch(fetchAllVideosRequest());
+      try {
+        const response = await axios.get(`/video/fetch-all`);
+        dispatch(fetchAllVideosSucess());
+        setVideos(response.data.result);
+      } catch (error) {
+        dispatch(fetchAllVideosFailure());
+      }
     };
-
-    fetchRandomVideos();
+    fetchVideos();
   }, [type]);
 
   return (

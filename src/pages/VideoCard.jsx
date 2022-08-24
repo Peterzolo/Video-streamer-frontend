@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 import { format } from "timeago.js";
 import axios from "axios";
 import { useEffect } from "react";
+import BG002 from "../images/Newbg2.jpg";
+import BG003 from "../images/movie-bg.jpg";
 
 const Container = styled.div`
   width: ${(props) => props.type !== "sm" && "250px"};
@@ -67,32 +69,31 @@ const Info = styled.div`
   color: ${({ theme }) => theme.textSoft};
 `;
 
-const VideoCard = ({ type, video }) => {
+const VideoCard = ({}) => {
   const [user, setUser] = useState({});
 
-  console.log('VIDEO',video)
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const response = await axios.get(`user/fetch-one/${video.userId}`);
-      console.log('RESPONSE NEW 88888',response?.data?.result)
-      setUser(response?.data?.result);
- 
-    };
-    fetchUser();
-  }, [video.userId]);
+
+  // useEffect(() => {
+  //   const fetchUser = async () => {
+  //     const response = await axios.get(`user/fetch-one/:id`);
+  //     setUser(response?.data?.result);
+  //   };
+  //   fetchUser();
+  // }, [video.userId]);
 
   return (
-    <Link to="/video/test" style={{ textDecoration: "none" }}>
-      <Container type={type}>
-        <Image type={type} src={video.imgUrl} />
-        <Details type={type}>
-          <ChannelImage type={type} src={user.img} />
+    <Link to="/video/:id" style={{ textDecoration: "none" }}>
+      <Container>
+        <Image  src={BG002} />
+        <Details>
+          <ChannelImage src={BG003} width ="70" />
           <Texts>
-            <Title>{video.title}</Title>
-            <ChannelName>{user.name}</ChannelName>  
+            <Title>Video title here</Title>
+            <ChannelName>User name here</ChannelName>  
             <Info>
-              {video.views} views {format(video.createdAt)}
+              1000345 views  created: 2 days ago
+              {/* 1000345 views {format(video.createdAt)} */}
             </Info>
           </Texts>
         </Details>

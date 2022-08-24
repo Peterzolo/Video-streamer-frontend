@@ -17,14 +17,14 @@ export const videoSlice = createSlice({
   name: "videos",
   initialState,
   reducers: {
-    fetchVideosRequest: (state) => {
+    fetchAllVideosRequest: (state) => {
       state.loading = true;
     },
-    fetchVideosSucess: (state, action) => {
+    fetchAllVideosSucess: (state, action) => {
       state.loading = false;
       state.videos = action.payload;
     },
-    fetchVideosFailure: (state, action) => {
+    fetchAllVideosFailure: (state, action) => {
       state.loading = false;
       state.error = action.payload;
     },
@@ -66,9 +66,9 @@ export const videoSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 export const {
-  fetchVideosRequest,
-  fetchVideosSucess,
-  fetchVideosFailure,
+  fetchAllVideosRequest,
+  fetchAllVideosSucess,
+  fetchAllVideosFailure,
   fetchSingleVideoRequest,
   fetchSingleVideoSucess,
   fetchSingleVideoFailure,

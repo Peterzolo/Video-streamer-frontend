@@ -108,7 +108,7 @@ background-color: grey;
 `
 
 const Navbar = () => {
-  const { currentUser } = useSelector((state) => state.user);
+  // const { currentUser } = useSelector((state) => state.user);
   const navigate = useNavigate();
 
   const handleSearch = () => {};
@@ -166,7 +166,7 @@ const Navbar = () => {
             SIGN UP
           </Link>
         </Button>
-        <Button>
+        {/* <Button>
           {currentUser ? (
             <User>
               <VideoCallIcon />
@@ -182,7 +182,7 @@ const Navbar = () => {
               SIGN IN
             </Link>
           )}
-        </Button>
+        </Button> */}
       </Auth>
     </Container>
   );

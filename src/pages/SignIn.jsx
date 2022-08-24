@@ -86,14 +86,8 @@ const SignIn = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    dispatch(logInStart());
-    try {
-      const response = await axios.post("/user/login", signInForm);
-      dispatch(logInSuccess(response.data.result));
-      console.log("RESPONSE SIGN IN", response.data.result);
-    } catch (error) {
-      dispatch(logInFailure(error));
-    }
+  
+ 
   };
 
   const handleChange = (e) => {

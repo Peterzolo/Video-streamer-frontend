@@ -1,34 +1,71 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import * as api from "../api/authApi";
 
-const initialState = {
-  currentUser: null,
-  loading: false,
-  error: false,
-};
+export const loginAction = createAsyncThunk(
+  "auth/login",
+  async ({ formValue, navigate, toast }, { rejectWithValue }) => {
+    try {
+      const response = await api.signIn(formValue);
+      toast.success("logged in Successfully");
+      navigate("/");
+      return response.data.result;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+export const registerAction = createAsyncThunk(
+  "auth/register",
+  async ({ formValue, navigate, toast }, { rejectWithValue }) => {
+    try {
+      const response = await api.register(formValue);
+      toast.success("Registered Successfully");
+      navigate("/");
+      return response.data.result;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  }
+);
+ const authSlice = createSlice({
 
-export const userSlice = createSlice({
-  name: "signin",
-  initialState,
-  reducers: {
-    logInStart: (state) => {
+  name: "auth",
+  initialState: {
+    user: null,
+    error: "",
+    loading: false,
+  },
+
+  extraReducers: {
+
+
+    [loginAction.pending]: (state, action) => {
       state.loading = true;
     },
-    logInSuccess: (state, action) => {
+    [loginAction.fulfilled]: (state, action) => {
       state.loading = false;
-      state.currentUser = action.payload;
-      
+      localStorage.setItem("profile", JSON.stringify({ ...action.payload }));
+      state.user = action.payload;
     },
-    logInFailure: (state,action) => {
-      state.loading = false; 
-      state.error = action.payload;
+    [loginAction.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
     },
-    logOut: (state) => {
-   return initialState
-    },
-  },
-});
 
-// Action creators are generated for each case reducer function
-export const { logInStart, logInSuccess, logInFailure, logOut } = userSlice.actions;
+    [registerAction.pending]: (state, action) => {
+      state.loading = true;
+    },
+    [registerAction.fulfilled]: (state, action) => {
+      state.loading = false;
+      localStorage.setItem("profile", JSON.stringify({ ...action.payload }));
+      state.user = action.payload;
+    },
+    [registerAction.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.payload.message;
+    },
+  }
 
-export default userSlice.reducer;
+})
+
+export default authSlice.reducer;

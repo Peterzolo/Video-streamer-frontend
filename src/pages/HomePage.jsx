@@ -30,7 +30,7 @@ const Wrapper = styled.div`
 const Video = styled.div``;
 
 
-const HomePage = ({ type }) => {
+const HomePage = () => {
   const [videos, setVideos] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -45,7 +45,7 @@ const HomePage = ({ type }) => {
       }
     };
     fetchVideos();
-  }, [type]);
+  }, []);
 
   return (
     <Container>

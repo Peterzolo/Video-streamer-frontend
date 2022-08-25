@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import BG002 from "../images/Newbg2.jpg";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
+import { toast } from "react-toastify";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { registerAction } from "../redux/slice/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Container = styled.div`
   background-image: url(${BG002});
@@ -72,14 +75,33 @@ const initialState = {
   name: "",
   email: "",
   password: "",
+  confirmPassword: "",
 };
 
-const SignIn = () => {
-  const [formData, setFormData] = useState(initialState);
-  const { name, email, password } = formData;
+const SignUp = () => {
+  const [formValue, setFormValue] = useState(initialState);
+  const { loading, error } = useSelector((state) => ({ ...state.auth }));
+  const { name, email, password, confirmPassword } = formValue;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleChange = () => {};
-  const handleFormSubmit = () => {};
+  useEffect(() => {
+    error && toast.error(error);
+  }, [error]);
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      return toast.error("Password does not match");
+    }
+    if (name && email && password && confirmPassword) {
+      dispatch(registerAction({ formValue, navigate, toast }));
+    }
+  };
+  const handleChange = (e) => {
+    let { name, value } = e.target;
+    setFormValue({ ...formValue, [name]: value });
+  };
 
   return (
     <Container>
@@ -97,6 +119,7 @@ const SignIn = () => {
                 placeholder="Enter Email"
                 name="name"
                 value={name}
+                required
                 onChange={handleChange}
               />
               <Input
@@ -104,6 +127,7 @@ const SignIn = () => {
                 placeholder="Enter Email"
                 name="email"
                 value={email}
+                required
                 onChange={handleChange}
               />
               <Input
@@ -111,9 +135,18 @@ const SignIn = () => {
                 placeholder="Enter password"
                 name="password"
                 value={password}
+                required
                 onChange={handleChange}
               />
-              <Button>Sign In</Button>
+              <Input
+                type="password"
+                placeholder="ConfirmPassword"
+                name="confirmPassword"
+                value={confirmPassword}
+                required
+                onChange={handleChange}
+              />
+              <Button>Sign Up</Button>
               <Account>
                 Already have account ?
                 <Link
@@ -124,7 +157,7 @@ const SignIn = () => {
                     color: "#fadb14",
                   }}
                 >
-                  Sign Up
+                  Sign In
                 </Link>
               </Account>
             </InputWrapper>
@@ -135,4 +168,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;

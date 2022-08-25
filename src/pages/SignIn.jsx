@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import BG002 from "../images/Newbg2.jpg";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import axios from "axios";
-import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import {
+  loginAction,
   logInFailure,
   logInStart,
   logInSuccess,
@@ -80,19 +81,25 @@ const initialState = {
 };
 
 const SignIn = () => {
-  const [signInForm, setSignInForm] = useState(initialState);
-  const { email, password } = signInForm;
+  const [formValue, setFormValue] = useState(initialState);
+  const { loading, error } = useSelector((state) => ({ ...state.auth }));
+  const {email, password} = formValue;
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const handleFormSubmit = async (e) => {
+  useEffect(() => {
+    error && toast.error(error);
+  }, [error]);
+
+  const handleFormSubmit = (e) => {
     e.preventDefault();
-  
- 
+    if (email && password) {
+      dispatch(loginAction({ formValue, navigate, toast }));
+    }
   };
-
   const handleChange = (e) => {
     let { name, value } = e.target;
-    setSignInForm({ ...signInForm, [name]: value });
+    setFormValue({ ...formValue, [name]: value });
   };
 
   return (
@@ -111,6 +118,7 @@ const SignIn = () => {
                 placeholder="Enter Email"
                 name="email"
                 value={email}
+                required
                 onChange={handleChange}
               />
               <Input
@@ -118,6 +126,7 @@ const SignIn = () => {
                 placeholder="Enter password"
                 name="password"
                 value={password}
+                required
                 onChange={handleChange}
               />
               <Button>Sign In</Button>

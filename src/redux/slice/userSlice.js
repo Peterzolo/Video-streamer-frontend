@@ -5,7 +5,8 @@ export const loginAction = createAsyncThunk(
   "auth/login",
   async ({ formValue, navigate, toast }, { rejectWithValue }) => {
     try {
-      const response = await api.signIn(formValue);
+      const response = await api.signInApi(formValue);
+      console.log('RESPONSE',response)
       toast.success("logged in Successfully");
       navigate("/");
       return response.data.result;
@@ -18,7 +19,7 @@ export const registerAction = createAsyncThunk(
   "auth/register",
   async ({ formValue, navigate, toast }, { rejectWithValue }) => {
     try {
-      const response = await api.register(formValue);
+      const response = await api.registerApi(formValue);
       toast.success("Registered Successfully");
       navigate("/");
       return response.data.result;
@@ -27,8 +28,7 @@ export const registerAction = createAsyncThunk(
     }
   }
 );
- const authSlice = createSlice({
-
+const authSlice = createSlice({
   name: "auth",
   initialState: {
     user: null,
@@ -37,8 +37,6 @@ export const registerAction = createAsyncThunk(
   },
 
   extraReducers: {
-
-
     [loginAction.pending]: (state, action) => {
       state.loading = true;
     },
@@ -64,8 +62,7 @@ export const registerAction = createAsyncThunk(
       state.loading = false;
       state.error = action.payload.message;
     },
-  }
-
-})
+  },
+});
 
 export default authSlice.reducer;

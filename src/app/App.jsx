@@ -1,7 +1,9 @@
 import { useState } from "react";
 import styled, { ThemeProvider } from "styled-components";
+import { ToastContainer } from "react-toastify";
 import Menu from "../components/Menu";
 import Navbar from "../components/Navbar";
+import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { darkTheme, lightTheme } from "../utility/theme";
 import SignIn from "../pages/SignIn";
@@ -34,11 +36,12 @@ function App() {
           <Main>
             <Navbar />
             <Wrapper>
+              <ToastContainer/>
               <Routes>
-                <Route index element={<HomePage type="fetch-all" />} />
-                <Route path="/random" element={<HomePage type="random" />} />
-                <Route path="/trend" element={<HomePage type="trend" />} />
-                <Route path="/sub" element={<HomePage type="sub" />} />
+                <Route path="/" element={<HomePage />} />
+                <Route path="/random" element={<HomePage />} />
+                <Route path="/trend" element={<HomePage />} />
+                <Route path="/sub" element={<HomePage />} />
                 <Route path="/signin" element={<SignIn />} />
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="video" element={<VideoDetails />} />

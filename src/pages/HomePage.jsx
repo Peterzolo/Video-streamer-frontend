@@ -1,9 +1,8 @@
 import React from "react";
-
 import BG001 from "../images/Newbg1.jpg";
 import BG002 from "../images/Newbg2.jpg";
+import BG003 from "../images/movie-bg001.jpg";
 import styled from "styled-components";
-import VideoCard from "./VideoCard";
 import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
@@ -13,11 +12,13 @@ import {
   fetchAllVideosRequest,
   fetchAllVideosSucess,
 } from "../redux/slice/videoSlice";
+import Navbar from "../components/Navbar";
 
 const Container = styled.div`
-  background-image: url(${BG001});
+  background-image: url(${BG003});
   background-position: center;
   background-size: cover;
+  height: 100vh;
 `;
 
 const Wrapper = styled.div`
@@ -49,11 +50,8 @@ const HomePage = () => {
 
   return (
     <Container>
-      <Wrapper>
-        {videos.map((video) => (
-          <VideoCard key={video._id} video={video} />
-        ))}
-      </Wrapper>
+      <Navbar/>
+     
     </Container>
   );
 };

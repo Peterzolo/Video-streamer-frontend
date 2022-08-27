@@ -8,11 +8,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { darkTheme, lightTheme } from "../utility/theme";
 import SignIn from "../pages/SignIn";
 import About from "../pages/About";
-import Upload from "../pages/Upload";
+
 import Contact from "../pages/Contact";
 import SignUp from "../pages/SignUp";
 import HomePage from "../pages/HomePage";
-import VideoDetails from "../pages/VideoDetails";
 
 const Container = styled.div`
   display: flex;
@@ -29,48 +28,18 @@ function App() {
   const [darkMode, setDarkMode] = useState(false);
 
   return (
-    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-      <Container>
-        <BrowserRouter>
-          <Menu darkMode={darkMode} setDarkMode={setDarkMode} />
-          <Main>
-            <Navbar />
-            <Wrapper>
-              <ToastContainer/>
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/random" element={<HomePage />} />
-                <Route path="/trend" element={<HomePage />} />
-                <Route path="/sub" element={<HomePage />} />
-                <Route path="/signin" element={<SignIn />} />
-                <Route path="/signup" element={<SignUp />} />
-                <Route path="video" element={<VideoDetails />} />
-                <Route path="video/:id" element={<VideoDetails />} />
-              </Routes>
-            </Wrapper>
-          </Main>
-        </BrowserRouter>
-      </Container>
-    </ThemeProvider>
+    <Container>
+      <BrowserRouter>
+        <Main>
+          <HomePage />
+          <Wrapper>
+            <ToastContainer />
+            <Routes></Routes>
+          </Wrapper>
+        </Main>
+      </BrowserRouter>
+    </Container>
   );
 }
 
 export default App;
-
-{
-  /* <Route index element={<HomePage type="random" />} />
-<Route path="/trends" element={<HomePage type="trends" />} />
-<Route
-  path="/subscription"
-  element={<HomePage type="subscription" />}
-/>
-<Route path="/signin" element={<SignIn />} />
-<Route path="/signup" element={<SignUp />} />
-<Route path="/about" element={<About />} />
-<Route path="/upload" element={<Upload />} />
-<Route path="/contact" element={<Contact />} />
-
-<Route path="/video" element = { <VideoDetails/> }  /> */
-}
-//   {/* <Route path=":id" element={<VideoDetails />} /> */}
-// {/* </Route> */}

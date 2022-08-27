@@ -1,0 +1,35 @@
+ /* .profile .option {
+  display: none;
+}
+.profile .option :hover {
+  display: flex;
+  background-color: green;
+} */
+.navbar {
+  &.scrolled{
+    background-color: black;
+  }
+}
+
+.profile{
+  .option{
+    display: none;
+  }
+  &:hover{
+    .option{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+ padding-left: 100px;
+  background-color: #262626;
+  border-radius: 10px;
+  padding: 10px;
+  color: aquamarine;
+
+    }
+  }
+
+  .arrow{
+    margin-left: 24px;
+  }
+}

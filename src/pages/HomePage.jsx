@@ -13,6 +13,7 @@ import {
   fetchAllVideosSucess,
 } from "../redux/slice/videoSlice";
 import Navbar from "../components/Navbar";
+import FeaturedImage from "../components/featured/FeaturedImage";
 
 const Container = styled.div`
   background-image: url(${BG003});
@@ -51,6 +52,7 @@ const HomePage = () => {
   return (
     <Container>
       <Navbar/>
+      <FeaturedImage/>
      
     </Container>
   );

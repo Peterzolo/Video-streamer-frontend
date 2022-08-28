@@ -15,13 +15,11 @@ const Span = styled.span`
   font-size: 20px;
   font-weight: 500;
   margin-left: 50px;
+  text-align: center;
+  color: white;
 `;
 const Wrapper = styled.div``;
 const MovieContainer = styled.div`
-  /* display: flex;
-  margin-left: 50px;
-  width: max-content;
-  padding: 10px; */
 `;
 // const Container = styled.div``
 // const Container = styled.div``

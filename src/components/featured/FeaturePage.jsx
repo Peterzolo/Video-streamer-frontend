@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import FeaturedImg from "../../images/New-bg-001.jpg";
+import FeaturedImg from "../../images/bg002.jpg";
+import Wine from "../../images/New-bg-001.jpg";
 import ImgTitle from "../../images/video-hubz.jpg";
 import PlayCircleFilledTwoToneIcon from "@mui/icons-material/PlayCircleFilledTwoTone";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
@@ -9,17 +10,18 @@ import "./featureimgStyle.scss";
 
 const Container = styled.div`
   position: relative;
+  margin-bottom: 6px;
 `;
 const Image = styled.img`
   width: 100%;
-  height: 100%;
+  height: 800px;
   object-fit: cover;
 `;
 const InforWrapper = styled.div`
   position: absolute;
   width: 30%;
   right: 50px;
-  bottom: 250px;
+  top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -66,7 +68,7 @@ const Category = styled.div`
 `;
 const CategorySpan = styled.span`
   color: #d48806;
-  background-color: green;
+  background-color: #262626;
   padding: 5px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;

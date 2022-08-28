@@ -13,24 +13,16 @@ import {
   fetchAllVideosSucess,
 } from "../redux/slice/videoSlice";
 import Navbar from "../components/Navbar";
-import FeaturedImage from "../components/featured/FeaturedImage";
+import VideoList from "../components/video-list/VideoList";
+import FeaturedPage from "../components/featured/FeaturePage";
 
 const Container = styled.div`
   background-image: url(${BG003});
   background-position: center;
   background-size: cover;
-  height: 100vh;
+  overflow: hidden;
+  width: 100%;
 `;
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-left: 5px;
-`;
-
-const Video = styled.div``;
-
 
 const HomePage = () => {
   const [videos, setVideos] = useState([]);
@@ -51,9 +43,8 @@ const HomePage = () => {
 
   return (
     <Container>
-      <Navbar/>
-      <FeaturedImage type ="series"/>
-     
+      <FeaturedPage type="series" />
+      <VideoList />
     </Container>
   );
 };

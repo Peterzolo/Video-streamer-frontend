@@ -86,7 +86,7 @@ const Option = styled.option`
 
 `;
 
-const FeaturedImage = ({ type }) => {
+const FeaturedPage = ({ type }) => {
   return (
     <Container>
       {type && (
@@ -141,4 +141,4 @@ const FeaturedImage = ({ type }) => {
   );
 };
 
-export default FeaturedImage;
+export default FeaturedPage;

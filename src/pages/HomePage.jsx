@@ -52,7 +52,7 @@ const HomePage = () => {
   return (
     <Container>
       <Navbar/>
-      <FeaturedImage/>
+      <FeaturedImage type ="series"/>
      
     </Container>
   );

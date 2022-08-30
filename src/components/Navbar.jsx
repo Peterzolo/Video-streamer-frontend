@@ -103,7 +103,6 @@ const Option = styled.div`
 // const Logout = styled.img``;
 
 const Navbar = () => {
-
   const [isScrolled, setIsScrolled] = useState(false);
 
   window.onscroll = () => {
@@ -122,13 +121,18 @@ const Navbar = () => {
       </Left>
       <Middle>
         <Navlink>
-          <HomeIcon />
-          Home
+          <Link to="/">
+            <HomeIcon />
+            Home
+          </Link>
         </Navlink>
         <Navlink>About</Navlink>
         <Navlink>Contact</Navlink>
-        <Navlink>List</Navlink>
-        <Navlink>Movie</Navlink>
+        <Navlink>List</Navlink>{" "}
+        <Navlink>
+          {" "}
+          <Link to="/video">Movie</Link>
+        </Navlink>
         <Navlink>Trending</Navlink>
       </Middle>
       <Search>

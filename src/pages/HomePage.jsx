@@ -21,7 +21,8 @@ const Container = styled.div`
   background-position: center;
   background-size: cover;
   overflow: hidden;
-  width: 100%;
+  /* width: 100%; */
+  padding-bottom:70px ;
 `;
 
 const HomePage = () => {

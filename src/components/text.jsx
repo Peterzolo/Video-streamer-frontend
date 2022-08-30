@@ -1,131 +1,125 @@
-<Container>
-{type && (
-  <Category>
-    <CategorySpan>{type === "movie" ? "Movie" : "Series"}</CategorySpan>
-    <Select name="genre" id="genre">
-      <Option>Genre</Option>
-      <Option value="romamce">Romamce</Option>
-      <Option value="history">History</Option>
-      <Option value="documenmtaries">Documentaries</Option>
-      <Option value="Love">Love</Option>
-      <Option value="action">Action</Option>
-      <Option value="local">Local</Option>
-      <Option value="epic">Epic</Option>
-      <Option value="fantasy">Fantasy</Option>
-      <Option value="comedy">Comedy</Option>
-      <Option value="musical">Musical</Option>
-      <Option value="sport">Sport</Option>
-      <Option value="sci-fi">Sci-Fi</Option>
-      <Option value="soap">Soap</Option>
-      <Option value="cartoon">Romamce</Option>
-      <Option value="thriller">Thriller</Option>
-      <Option value="war">War</Option>
-    </Select>
-  </Category>
-)}
-
-<Image src={Wine} />
-<InforWrapper>
-  <ImageTitle src={ImgTitle} />
-  <Description>
-    t is a long established fact that a reader will be distracted by the
-    readable content of a page when looking at its layout. The point of
-    using Lorem Ipsum is that it has a more-or-less normal distribution of
-    letters, as opposed to using 'Content here, content here', making it
-    look like readable English. Many desktop publishin
-  </Description>
-
-  <ButtonWrapper>
-    <PlayButton>
-      {/* Play Movie */}
-      <PlayCircleFilledTwoToneIcon
-        style={{ fontSize: "30px", color: "red" }}
-      />
-    </PlayButton>
-    <InfoButton>
-      <InfoOutlinedIcon style={{ fontSize: "30px", color: "blue" }} />
-    </InfoButton>
-  </ButtonWrapper>
-</InforWrapper>
-</Container>
-
-
+import React, { useState } from "react";
+import styled from "styled-components";
+import ImageVideoOO1 from "../../images/image-movie001.jpg";
+import PlayCircleIcon from "@mui/icons-material/PlayCircle";
+import AddBoxIcon from "@mui/icons-material/AddBox";
+import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
+import ThumbDownOutlinedIcon from "@mui/icons-material/ThumbDownOutlined";
+import "./ListItem.scss";
 const Container = styled.div`
-  /* position: relative; */
-  /* margin-bottom: 6px; */
+  width: 225px;
+  height: 120px;
+  background-color: #ad8b00;
+  /* margin-top: 5px; */
+  margin-right: 5px;
+  /* padding: 5px;  */
+  border-radius: 10px;
+  /* margin-bottom: 300px; */
+  /* &:hover {
+    width: 250px;
+    height: 170px;
+ 
+  }  */
 `;
 const Image = styled.img`
   width: 100%;
-  height: 80%;
+  height: 120px;
+  padding: 5px;
   object-fit: cover;
+  /* cursor: pointer;
+  &:hover {
+    width: 250px;
+    height: 170px;
+    position: absolute;
+    top: -150px;
+   
+  } */
 `;
-const InforWrapper = styled.div`
-  position: absolute;
-  width: 30%;
-  right: 50px;
-  bottom: 250px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-`;
-const ImageTitle = styled.img`
-  width: 100%;
-  height: 100px;
-`;
-const Description = styled.div`
-  background-color: #000000;
-  padding: 20px;
-  margin-top: 10px;
-  border-radius: 15px;
-  color: #bfbfbf;
-  align-items: center;
-`;
-const ButtonWrapper = styled.div`
-  margin-top: 10px;
-  display: flex;
-  width: 100%;
-`;
-const PlayButton = styled.button`
-  padding: 10px;
-  width: 50%;
-  border-top-left-radius: 50px;
-  border-bottom-left-radius: 50px;
-`;
-const InfoButton = styled.button`
-  padding: 10px;
-  width: 50%;
-  border-top-right-radius: 50px;
-  border-bottom-right-radius: 50px;
-`;
-const Category = styled.div`
-  position: absolute;
-  top: 200px;
-  left: 50px;
-  font-size: 20px;
-  font-weight: 400;
+const ItemInfo = styled.div`
   display: flex;
   align-items: center;
-  color: grey;
+  justify-content: space-around;
+  padding: 5px;
+  cursor: pointer;
+  color: white;
 `;
-const CategorySpan = styled.span`
-  color: #d48806;
-  background-color: green;
+const ItemInfoTop = styled.div`
+  padding: 10px;
+  display: flex;
+  align-items: center;
+   background-color: #262626;
+`;
+const Duration = styled.div`
+  background-color: #262626;
+  margin-right: 3px;
   padding: 5px;
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-   margin-left: 20px;
-
+  color: #8c8c8c;
+  font-size: 18px;
+  font-weight: 400;
 `;
-
-const Select = styled.select`
-  cursor: pointer;
+const AgeLimit = styled.div`
   background-color: #262626;
-  color: #b2b1b1;
-  padding: 4px;
+  margin-right: 3px;
+  padding: 5px;
+  color: #8c8c8c;
+  font-size: 18px;
+  font-weight: 400;
+`;
+const Year = styled.div`
+  background-color: #262626;
+  padding: 5px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+  color: #8c8c8c;
+  font-size: 18px;
+  font-weight: 400;
 `;
-const Option = styled.option`
+const Description = styled.p`
+  text-align: left;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: 5px;
+  color: aliceblue;
+  word-spacing: 5px;
+  background-color: #262626;
+  
+`;
+const Action = styled.p`
+  text-align: left;
+  padding: 10px;
+  font-size: 15px;
+  font-weight: 400;
+  margin-top: 5px;
+  color: aliceblue;
+  word-spacing: 5px;
+`;
 
-`;
+const ListItems = () => {
+  const [isHovered, setIsHovered] = useState(false)
+  return (
+    <Container>
+      <Image src={ImageVideoOO1} alt=""/>
+      <ItemInfo>
+        <PlayCircleIcon />
+        <AddBoxIcon />
+        <ThumbUpOutlinedIcon />
+        <ThumbDownOutlinedIcon />
+      </ItemInfo>
+      <ItemInfoTop>
+        <Duration>2hr:36 min</Duration>
+        <AgeLimit>+16</AgeLimit>
+        <Year>2021</Year>
+      </ItemInfoTop>
+      <Description>
+        packages and web page editors now use Lorem Ipsum as their default model
+        text, and a search for 'lorem ipsum' will uncover many web sites
+      </Description>
+      <Action>Action</Action>
+    </Container>
+  );
+};
+
+export default ListItems;

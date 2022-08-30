@@ -6,53 +6,38 @@ import ListItems from "../list-items/ListItems";
 
 import "./VideoList.scss";
 
-const Container = styled.div`
-  width: 100%;
-  margin-top: 10px;
-`;
-
-const Span = styled.span`
-  font-size: 20px;
-  font-weight: 500;
-  margin-left: 50px;
-  text-align: center;
-  color: white;
-`;
-const Wrapper = styled.div``;
-const MovieContainer = styled.div`
-`;
-// const Container = styled.div``
-// const Container = styled.div``
-// const Container = styled.div``
-
 const VideoList = () => {
   const videoListref = useRef();
   const [slideNumber, setSlideNumber] = useState(0);
   const [isMoved, setIsMoved] = useState(false);
 
+  const listRef = useRef();
+
   const handleArrowClick = (direction) => {
     setIsMoved(true);
-    let distance = videoListref.current.getBoundingClientRect().x - 50;
+    let distance = listRef.current.getBoundingClientRect().x - 50;
     if (direction === "left" && slideNumber > 0) {
       setSlideNumber(slideNumber - 1);
-      videoListref.current.style.transform = `translateX(${230 + distance}px)`;
+      listRef.current.style.transform = `translateX(${230 + distance}px)`;
     }
     if (direction === "right" && slideNumber < 5) {
       setSlideNumber(slideNumber + 1);
-      videoListref.current.style.transform = `translateX(${-230 + distance}px)`;
+      listRef.current.style.transform = `translateX(${-230 + distance}px)`;
     }
   };
 
   return (
-    <Container>
-      <Span>Keep watching your favourite movies</Span>
-      <Wrapper className="wrapper">
+    <div className="container">
+      <spand className="list-title">
+        Continue To Watch Your Favourite Movie
+      </spand>
+      <div className="wrapper">
         <ArrowBackIosIcon
-          className="sliderArrow left"
+          className="slider-arrow left"
           onClick={() => handleArrowClick("left")}
-          style={{ display: !isMoved && "none" }}  
+          style={{ display: !isMoved && "none" }}
         />
-        <MovieContainer className="movie-container" ref={videoListref}>
+        <div className="movie-container" ref={listRef}>
           <ListItems />
           <ListItems />
           <ListItems />
@@ -63,15 +48,13 @@ const VideoList = () => {
           <ListItems />
           <ListItems />
           <ListItems />
-          <ListItems />
-          <ListItems />
-        </MovieContainer>
+        </div>
         <ArrowForwardIosIcon
-          className="sliderArrow right"
+          className="slider-arrow right"
           onClick={() => handleArrowClick("right")}
         />
-      </Wrapper>
-    </Container>
+      </div>
+    </div>
   );
 };
 

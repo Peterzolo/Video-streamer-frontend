@@ -22,7 +22,7 @@ const Container = styled.div`
   background-size: cover;
   overflow: hidden;
   /* width: 100%; */
-  padding-bottom:70px ;
+  padding-bottom:200px ;
 `;
 
 const HomePage = () => {

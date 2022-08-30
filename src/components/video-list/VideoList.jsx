@@ -7,7 +7,6 @@ import ListItems from "../list-items/ListItems";
 import "./VideoList.scss";
 
 const VideoList = () => {
-  const videoListref = useRef();
   const [slideNumber, setSlideNumber] = useState(0);
   const [isMoved, setIsMoved] = useState(false);
 
@@ -38,16 +37,16 @@ const VideoList = () => {
           style={{ display: !isMoved && "none" }}
         />
         <div className="movie-container" ref={listRef}>
-          <ListItems />
-          <ListItems />
-          <ListItems />
-          <ListItems />
-          <ListItems />
-          <ListItems />
-          <ListItems />
-          <ListItems />
-          <ListItems />
-          <ListItems />
+          <ListItems index={0} />
+          <ListItems index={1} />
+          <ListItems index={2} />
+          <ListItems index={3} />
+          <ListItems index={4} />
+          <ListItems index={5} />
+          <ListItems index={6} />
+          <ListItems index={7} />
+          <ListItems index={8} />
+          <ListItems index={9} />
         </div>
         <ArrowForwardIosIcon
           className="slider-arrow right"

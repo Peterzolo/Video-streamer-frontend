@@ -28,10 +28,10 @@ const ListItems = ({ index }) => {
           <video src={trailer} autoPlay={true} loop/>
           <div className="item-info">
             <div className="icons">
-              <AddBoxIcon className="addBox" />
-              <PlayCircleIcon className="play" />
-              <ThumbUpOutlinedIcon className="like" />
-              <ThumbDownOutlinedIcon className="dislike" />
+              <AddBoxIcon className="icon" />
+              <PlayCircleIcon className="icon" />
+              <ThumbUpOutlinedIcon className="icon" />
+              <ThumbDownOutlinedIcon className="icon" />
             </div>
             <div className="info-top">
               <span className="duration">2hr : 20mins</span>

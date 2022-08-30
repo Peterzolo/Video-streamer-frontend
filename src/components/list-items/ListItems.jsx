@@ -10,6 +10,11 @@ import "./ListItem.scss";
 
 const ListItems = ({ index }) => {
   const [isHovered, setIsHovered] = useState(false);
+
+  // const trailler = "https://www.imdb.com/video/vi1080541721?ref_=vi_tr_tr_vp_1";
+  // const trailer = "https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761";
+  const trailer = "https://player.vimeo.com/external/439823519.sd.mp4?s=eabe97faa9cf8117248870a22d27ecf4a5d8124f&profile_id=164&oauth2_token_id=57447761";
+
   return (
     <div
       className="list-items"
@@ -18,24 +23,29 @@ const ListItems = ({ index }) => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <img src={ImageVideoOO1} alt="" />
-      <div className="item-info">
-        <div className="icons">
-          <AddBoxIcon  className="addBox"/>
-          <PlayCircleIcon className="play"/>
-          <ThumbUpOutlinedIcon  className="like"/>
-          <ThumbDownOutlinedIcon  className="dislike"/>
-        </div>
-        <div className="info-top">
-          <span className="duration">2hr : 20mins</span>
-          <span className="limit">18 +</span>
-          <span className="year">2012</span>
-        </div>
-        <div className="desc">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-          temporibus aut velit odit, nihil natus laborum consequatur dolorum
-        </div>
-        <div className="genre">Comedy</div>
-      </div>
+      {isHovered && (
+        <>
+          <video src={trailer} autoPlay={true} loop/>
+          <div className="item-info">
+            <div className="icons">
+              <AddBoxIcon className="addBox" />
+              <PlayCircleIcon className="play" />
+              <ThumbUpOutlinedIcon className="like" />
+              <ThumbDownOutlinedIcon className="dislike" />
+            </div>
+            <div className="info-top">
+              <span className="duration">2hr : 20mins</span>
+              <span className="limit">18 +</span>
+              <span className="year">2012</span>
+            </div>
+            <div className="desc">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
+              temporibus aut velit odit, nihil natus laborum consequatur dolorum
+            </div>
+            <div className="genre">Comedy</div>
+          </div>
+        </>
+      )}
     </div>
   );
 };
